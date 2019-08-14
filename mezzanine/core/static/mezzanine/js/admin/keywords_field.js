@@ -43,7 +43,7 @@ jQuery(function($) {
         var fields = $.makeArray($('.keywords-field').prev('input[type=text]'));
         var submitKeywords = function() {
             var field = fields.shift();
-            var keywords = {text_keywords: field.value};
+            var keywords = {text_keywords: field.value, csrfmiddlewaretoken: window.__csrf_token};
             $.post(window.__admin_keywords_submit_url, keywords, function(data) {
                 var ids = data.split("|")[0].split(',');
                 field.value = data.split("|")[1];
